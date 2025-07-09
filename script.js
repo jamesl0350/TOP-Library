@@ -4,10 +4,15 @@ const booksContainer = document.querySelector(".books-container");
 const bookForm = document.querySelector(".book-form");
 const addNewBookBtn = document.querySelector(".new-book-btn");
 const dialog = document.querySelector(".book-form-dialog");
+const bookSubmitBtn = document.querySelector(".dialog-submit-btn");
 
 addNewBookBtn.addEventListener('click', function () {
   bookForm.style.display = 'block';
   dialog.show()
+})
+
+bookSubmitBtn.addEventListener('click', function() {
+  event.preventDefault();
 })
 
 function Book(title, author, pages, read, id) {
@@ -33,5 +38,21 @@ function displayBooks() {
       addedBookIds.push(book.id)
     }
   });
+}
 
+function createBookCard(book) {
+  const bookCard = document.createElement('div');
+  bookCard.classList.add('bookCard')
+  const bookDetails = document.createElement('div');
+  bookDetails.classList.add('bookDetails')
+
+
+  // Paragraphs for form fields
+  const titleP = document.createElement('p');
+  titleP.classList.add('book-title');
+  titleP.textContent = book.title;
+
+  const authorP = document.createElement('p');
+  authorP.classList.add('book-author');
+  authorP.textContent = book.author;
 }

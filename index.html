@@ -8,14 +8,15 @@
   </head>
   <body>
     <button class="new-book-btn">New Book</button>
-    <form class="book-form">
-      <dialog class="book-form-dialog">
+    <dialog class="book-form-dialog">
+      <form action="" class="book-form">
         <p>Title:</p>
         <input type="text" name="title-input" />
         <p>Author:</p>
         <input type="text" name="author-input" />
         <p>Pages:</p>
         <input type="number" name="pages-input" />
+
         <fieldset>
           <legend>Read?</legend>
           <input
@@ -28,12 +29,18 @@
           <input type="radio" class="no-option" name="no-option" value="no" />
           <label for="no-option">No</label>
         </fieldset>
-        <button class="add-book-btn">Add Book</button>
-        <button class="dialog-close-btn" onclick="book-form-dialog.close()">
-          Close
-        </button>
-      </dialog>
-    </form>
+
+        <input
+          type="submit"
+          class="dialog-submit-btn"
+          value="Add Book"
+          name="dialog-submit-btn"
+          onclick="addBookToLibrary()"
+        />
+
+        <button class="dialog-close-btn" onclick="dialog.close()">Close</button>
+      </form>
+    </dialog>
     <script src="script.js"></script>
   </body>
 </html>
