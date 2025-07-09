@@ -1,8 +1,14 @@
 const myLibrary = [];
 const addedBookIds = [];
-const booksContainer = document.querySelector(".books-container")
-const bookForm = document.querySelector(".book-form")
-const addNewBookBtn = document.querySelector(".new-book-btn")
+const booksContainer = document.querySelector(".books-container");
+const bookForm = document.querySelector(".book-form");
+const addNewBookBtn = document.querySelector(".new-book-btn");
+const dialog = document.querySelector(".book-form-dialog");
+
+addNewBookBtn.addEventListener('click', function () {
+  bookForm.style.display = 'block';
+  dialog.show()
+})
 
 function Book(title, author, pages, read, id) {
   this.title = title;

@@ -8,7 +8,32 @@
   </head>
   <body>
     <button class="new-book-btn">New Book</button>
-    <form class="book-form"></form>
+    <form class="book-form">
+      <dialog class="book-form-dialog">
+        <p>Title:</p>
+        <input type="text" name="title-input" />
+        <p>Author:</p>
+        <input type="text" name="author-input" />
+        <p>Pages:</p>
+        <input type="number" name="pages-input" />
+        <fieldset>
+          <legend>Read?</legend>
+          <input
+            type="radio"
+            class="yes-option"
+            name="yes-option"
+            value="yes"
+          />
+          <label for="yes-option">Yes</label>
+          <input type="radio" class="no-option" name="no-option" value="no" />
+          <label for="no-option">No</label>
+        </fieldset>
+        <button class="add-book-btn">Add Book</button>
+        <button class="dialog-close-btn" onclick="book-form-dialog.close()">
+          Close
+        </button>
+      </dialog>
+    </form>
     <script src="script.js"></script>
   </body>
 </html>
