@@ -10,35 +10,31 @@
     <button class="new-book-btn">New Book</button>
     <dialog class="book-form-dialog">
       <form action="" class="book-form">
-        <p>Title:</p>
-        <input type="text" name="title-input" />
-        <p>Author:</p>
-        <input type="text" name="author-input" />
-        <p>Pages:</p>
-        <input type="number" name="pages-input" />
+        <p class="formField">
+          <label for="title">Title</label>
+          <input required type="text" id="title" />
+        </p>
 
-        <fieldset>
-          <legend>Read?</legend>
-          <input
-            type="radio"
-            class="yes-option"
-            name="yes-option"
-            value="yes"
-          />
-          <label for="yes-option">Yes</label>
-          <input type="radio" class="no-option" name="no-option" value="no" />
-          <label for="no-option">No</label>
-        </fieldset>
+        <p class="formField">
+          <label for="author">Author</label>
+          <input required type="text" id="author" />
+        </p>
 
-        <input
-          type="submit"
-          class="dialog-submit-btn"
-          value="Add Book"
-          name="dialog-submit-btn"
-          onclick="addBookToLibrary()"
-        />
+        <p class="formField">
+          <label for="pages">Pages</label>
+          <input required type="number" id="pages" />
+        </p>
 
-        <button class="dialog-close-btn" onclick="dialog.close()">Close</button>
+        <p class="formField">
+          <div class="read-div">
+          <label for="read">Have you read this book?</label>
+          <input type="checkbox" id="read">
+        </div>
+        </p>
+        <p class="formButtons">
+          <button class="close-modal" id="close-modal">Close</button>
+          <button class="add-new-book" id="add-new-book">Add Book!</button>
+        </p>
       </form>
     </dialog>
     <script src="script.js"></script>

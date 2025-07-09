@@ -3,16 +3,40 @@ const addedBookIds = [];
 const booksContainer = document.querySelector(".books-container");
 const bookForm = document.querySelector(".book-form");
 const addNewBookBtn = document.querySelector(".new-book-btn");
-const dialog = document.querySelector(".book-form-dialog");
-const bookSubmitBtn = document.querySelector(".dialog-submit-btn");
+const addBookBtn = document.querySelector("#add-new-book");
+const formModal = document.querySelector("dialog");
+const closeModal = document.querySelector("#close-modal")
 
 addNewBookBtn.addEventListener('click', function () {
   bookForm.style.display = 'block';
-  dialog.show()
+  formModal.show()
 })
 
-bookSubmitBtn.addEventListener('click', function() {
+addBookBtn.addEventListener('click', function() {
   event.preventDefault();
+})
+
+closeModal.addEventListener('click', function() {
+  event.preventDefault();
+  document.querySelector(".book-form").reset();
+  formModal.close();
+});
+
+addBookBtn.addEventListener('click', function() {
+  let isFormComplete = document.querySelector('form').checkValidity();
+  if (!isFormComplete) {
+    document.querySelector('form').reportValidity();
+  } else {
+    event.preventDefault();
+    // Get the books details
+    const bookTitle = document.getElementById('title');
+    const bookAuthor = document.getElementById('author');
+    const bookPages = document.getElementById('pages');
+    const bookWasRead = document.getElementById('read');
+    addBookToLibrary(bookTitle.value, bookAuthor.value, bookPages.value, bookWasRead.checked);
+    document.querySelector('form').reset();
+    formModal.close();
+  }
 })
 
 function Book(title, author, pages, read, id) {
@@ -55,4 +79,16 @@ function createBookCard(book) {
   const authorP = document.createElement('p');
   authorP.classList.add('book-author');
   authorP.textContent = book.author;
+
+  const pagesP = document.createElement('p');
+  pagesP.classList.add('book-pages');
+  pagesP.textContent = `${book.pages} pages`;
+
+  const readP = document.createElement('p');
+  readP.classList.add('book-read')
+
+  bookDetails.appendChild(titleP)
+  bookDetails.appendChild(authorP)
+  bookDetails.appendChild(pagesP)
+  bookDetails.appendChild(readP)
 }
