@@ -23,11 +23,11 @@ closeModal.addEventListener('click', function(event) {
 
 // make sure form is complete before adding information to the library array
 addBookBtn.addEventListener('click', function(event) {
+  event.preventDefault();
   let isFormComplete = document.querySelector('form').checkValidity();
   if (!isFormComplete) {
     document.querySelector('form').reportValidity();
   } else {
-    event.preventDefault();
     // Get the books details
     const bookTitle = document.getElementById('title');
     const bookAuthor = document.getElementById('author');
@@ -97,7 +97,7 @@ function createBookCard(book) {
   bookDetails.appendChild(readP)
 
   // buttons
-  const toggleReadButton = documnet.createElement('button');
+  const toggleReadButton = document.createElement('button');
   toggleReadButton.classList.add('toggle-read-button')
   toggleReadButton.id = "toggle-read-button"
 
