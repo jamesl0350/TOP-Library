@@ -7,22 +7,22 @@ const addBookBtn = document.querySelector("#add-new-book");
 const formModal = document.querySelector("dialog");
 const closeModal = document.querySelector("#close-modal")
 
+// Show form
 addNewBookBtn.addEventListener('click', function () {
   bookForm.style.display = 'block';
   formModal.show()
 })
 
-addBookBtn.addEventListener('click', function() {
-  event.preventDefault();
-})
 
-closeModal.addEventListener('click', function() {
+//close modal
+closeModal.addEventListener('click', function(event) {
   event.preventDefault();
   document.querySelector(".book-form").reset();
   formModal.close();
 });
 
-addBookBtn.addEventListener('click', function() {
+// make sure form is complete before adding information to the library array
+addBookBtn.addEventListener('click', function(event) {
   let isFormComplete = document.querySelector('form').checkValidity();
   if (!isFormComplete) {
     document.querySelector('form').reportValidity();
@@ -39,6 +39,7 @@ addBookBtn.addEventListener('click', function() {
   }
 })
 
+// book constructor
 function Book(title, author, pages, read, id) {
   this.title = title;
   this.author = author;
@@ -47,6 +48,7 @@ function Book(title, author, pages, read, id) {
   this.id = id;
 }
 
+
 function addBookToLibrary(title, author, pages, read) {
   const id = crypto.randomUUID();
   const newBook = new Book(title, author, pages, read, id);
@@ -54,6 +56,7 @@ function addBookToLibrary(title, author, pages, read) {
   displayBooks();
 }
 
+// display books
 function displayBooks() {
   myLibrary.forEach(book => {
     if (!addedBookIds.includes(book.id)) {
@@ -64,6 +67,7 @@ function displayBooks() {
   });
 }
 
+// book card function
 function createBookCard(book) {
   const bookCard = document.createElement('div');
   bookCard.classList.add('bookCard')
@@ -91,4 +95,12 @@ function createBookCard(book) {
   bookDetails.appendChild(authorP)
   bookDetails.appendChild(pagesP)
   bookDetails.appendChild(readP)
+
+  // buttons
+  const toggleReadButton = documnet.createElement('button');
+  toggleReadButton.classList.add('toggle-read-button')
+  toggleReadButton.id = "toggle-read-button"
+
+
+  return bookCard;
 }
