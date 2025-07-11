@@ -39,6 +39,7 @@ addBookBtn.addEventListener('click', function(event) {
   }
 })
 
+
 // book constructor
 function Book(title, author, pages, read, id) {
   this.title = title;
@@ -70,37 +71,72 @@ function displayBooks() {
 // book card function
 function createBookCard(book) {
   const bookCard = document.createElement('div');
-  bookCard.classList.add('bookCard')
+  bookCard.classList.add('book-card')
   const bookDetails = document.createElement('div');
-  bookDetails.classList.add('bookDetails')
+  bookDetails.classList.add('book-details')
 
 
   // Paragraphs for form fields
   const titleP = document.createElement('p');
   titleP.classList.add('book-title');
-  titleP.textContent = book.title;
+  titleP.textContent = `Title: ${book.title}`;
 
   const authorP = document.createElement('p');
   authorP.classList.add('book-author');
-  authorP.textContent = book.author;
+  authorP.textContent = `Author: ${book.author}`;
 
   const pagesP = document.createElement('p');
   pagesP.classList.add('book-pages');
-  pagesP.textContent = `${book.pages} pages`;
+  pagesP.textContent = `Pages: ${book.pages}`;
 
   const readP = document.createElement('p');
   readP.classList.add('book-read')
+  readP.textContent = `Read Status: ${book.read ? "Read" : "Not read"}`;
 
   bookDetails.appendChild(titleP)
   bookDetails.appendChild(authorP)
   bookDetails.appendChild(pagesP)
   bookDetails.appendChild(readP)
 
+
+
   // buttons
+ 
+  const bookBtns = document.createElement('div');
+  bookBtns.classList.add('book-btns')
   const toggleReadButton = document.createElement('button');
   toggleReadButton.classList.add('toggle-read-button')
   toggleReadButton.id = "toggle-read-button"
+  toggleReadButton.textContent = "Toggle read"
+
+  const removeBtn = document.createElement('button');
+  removeBtn.classList.add('remove-btn');
+  removeBtn.id = 'remove-btn';
+  removeBtn.textContent = "Remove"
+
+  bookBtns.append(toggleReadButton, removeBtn);
+  bookCard.append(bookDetails, bookBtns);
+
+  removeBtn.addEventListener('click', () => {
+    const index = myLibrary.indexOf(book);
+    myLibrary.splice(index, 1);
+    bookCard.remove();
+  });
 
 
   return bookCard;
+
+
 }
+
+function removeBook() {
+  const index = myLibrary.indexOf(book);
+  myLibrary.splice(index, 1);
+  bookCard.remove()
+}
+
+
+addBookToLibrary("Harry Potter", "Cant Remember", 1234, true);
+addBookToLibrary("The Hunger Games", "Can't remember either", 1234, true)
+addBookToLibrary("Rich Dad Poor Dad", "idk", 374, false);
+

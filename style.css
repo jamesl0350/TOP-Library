@@ -1,3 +1,52 @@
 .book-form {
   display: none;
 }
+
+.books-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  border: 3px solid black;
+}
+
+.book-card {
+  display: flex;
+  flex-direction: column;
+  border: 3px solid black;
+  height: 220px;
+  padding: 10px 10px;
+  border-radius: 5px;
+  margin: 20px 20px;
+  background-color: firebrick;
+}
+
+.book-title {
+  font-weight: bold;
+}
+
+.book-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.book-btns {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  padding-bottom: 2px;
+  color: red;
+}
+
+.remove-btn {
+  color: black;
+  background-color: red;
+  text-decoration: none;
+  border-radius: 10px;
+}
+
+.toggle-read-button {
+  color: black;
+  background-color: yellow;
+  text-decoration: none;
+  border-radius: 10px;
+}
